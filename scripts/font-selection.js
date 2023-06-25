@@ -13,16 +13,16 @@ for(let i = 0; i < fonts.length; i++){
 function changeFont(e) {
     console.log(e.target);
     if(e.target.classList.contains("sans")) {
-        label.innerHTML = 'Sans Serif <img src="assets/images/icon-arrow-down.svg" alt="select button"></img>';
+        label.innerHTML = 'Sans Serif <img src="../assets/images/icon-arrow-down.svg" alt="select button"></img>';
         label.style.fontFamily = "'Inter', sans-serif";
         body.style.fontFamily = "'Inter', sans-serif";
         
     } else if(e.target.classList.contains("serif")) {
-        label.innerHTML = 'Serif <img src="assets/images/icon-arrow-down.svg" alt="select button"></img>';
+        label.innerHTML = 'Serif <img src="../assets/images/icon-arrow-down.svg" alt="select button"></img>';
         label.style.fontFamily = "'Lora', serif";
         body.style.fontFamily = "'Lora', serif";
     } else if(e.target.classList.contains("mono")) {
-        label.innerHTML = 'Mono <img src="assets/images/icon-arrow-down.svg" alt="select button"></img>';
+        label.innerHTML = 'Mono <img src="../assets/images/icon-arrow-down.svg" alt="select button"></img>';
         label.style.fontFamily = "'Inconsolata', mono";
         body.style.fontFamily = "'Inconsolata', mono";
     }
