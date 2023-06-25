@@ -3,6 +3,7 @@ const form = document.getElementById("word-search");
 const input = form.querySelector(".search-input");
 const errorMessage = document.querySelector(".error-message");
 let headerCount = 0;
+const darkModeSelector = document.querySelector(".dark-mode-toggle-bg");
 
 
 form.addEventListener("submit", async (e) => {
@@ -73,6 +74,7 @@ function createDefinitionComponent(word, meaning, pronunciation) {
         }
     });
 
+
     definitionSection.append(header);
     definitionSection.append(list);
 
@@ -133,6 +135,11 @@ function createDefinition(type, el) {
         li = makeElement("li", [], '');
         div = makeElement("div", ["dot", "invisible"], '•');
         p = makeElement("span", ["no-dot-list-item"], el);
+    }
+
+    if(darkModeSelector.classList.contains("dark")) {
+        console.log("worked");
+        p.classList.add("dark");
     }
 
     li.append(div, p);
