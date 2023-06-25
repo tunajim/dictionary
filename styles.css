@@ -1,0 +1,432 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --light-gray: #757575;
+    --dark-gray: #2d2d2d;
+}
+
+.light-gray-text {
+    color: var(--light-gray);
+}
+
+html {
+    font-size: 62.5%;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    gap: 2.4rem;
+    columns: 2.4rem;
+    margin: 2.4rem 2.4rem 0 2.4rem;
+    font-size: 1.6rem;
+    color: #2d2d2d;
+    background-color: #ffffff;
+    font-family: 'Inter', sans-serif;
+    transition: color 500ms, background-color 500ms;
+}
+
+body.dark-mode {
+    color: #ffffff;
+    background-color: #050505;
+}
+
+main {
+    gap: 2.4rem;
+}
+
+
+.flex {
+    display: flex;
+}
+
+.fl-gap {
+    gap: 1rem;
+}
+
+.fl-column {
+    flex-direction: column;
+}
+
+.center {
+    justify-content: center;
+    align-items: center;
+}
+
+.space-between {
+    justify-content: space-between;
+}
+
+/* Header and Font/Dark-mode Options */
+
+.logo {
+    width: 2.8rem;
+}
+
+.moon {
+    height: 2rem;
+}
+
+.moon.dark {
+    stroke: #A445ED;
+}
+
+header  {
+    display: flex;
+    justify-content: space-between;
+}
+
+.options {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+
+.border {
+    border: .5px solid #979797;
+    height: 32px;
+}
+
+
+.dark-mode-toggle-bg {
+    position: relative;
+    background-color: #757575;
+    width: 40px;
+    height: 20px;
+    border-radius: 10px;
+    transition: background-color 500ms;
+}
+
+.dark-mode-toggle-bg.dark {
+    background-color: #A445ED;
+}
+
+.dark-mode-toggle-button {
+    position: absolute;
+    background-color: #ffffff;
+    width: 14px;
+    height: 14px;
+    border-radius: 10px;
+    top: 3px;
+    left: 3px;
+    right: 10px;
+    pointer-events: none;
+    transition: left 500ms;
+}
+
+.dark-mode-toggle-button.dark {
+    left: 23px;
+    right: 3px;
+}
+
+/* font styles */
+
+.sans {
+    font-family: 'Inter', sans-serif;;
+}
+
+.serif {
+    font-family: 'Lora', serif;
+}
+
+.mono {
+    font-family: 'Inconsolata', monospace;
+}
+
+option {
+    font-family: 'Lora', serif;
+    background-color: red;
+    padding: 10px;
+}
+
+/* dropdown */
+
+.font-select {
+    position: relative;
+    appearance: none;
+    border: none;
+    outline: none;
+    text-decoration: none;
+}
+
+.dropdown {
+    opacity: 0;
+    position: absolute;
+    box-shadow: 0 .5rem 3.0rem 0 #00000010;
+    background-color: #ffffff;
+    border-radius: 1.6rem;
+    top: 4.2rem;
+    right: 0;
+    width: 18.3rem;
+    transition: opacity 500ms;
+    pointer-events: none;
+}
+
+.dropdown-label {
+    font-size: 1.8rem;
+    gap: 1.6rem;
+}
+
+.dropdown.active {
+    opacity: 100;
+    transition: opacity 500ms;
+    pointer-events: all;
+}
+
+.dropdown.dark {
+    background-color: #050505;
+    box-shadow: 0px .5rem 3rem 0px #A445ED;
+}
+
+.dropdown ul {
+    list-style: none;
+    margin: 2.4rem;
+    gap: 1.6rem;
+}
+
+
+
+
+.no-click {
+    pointer-events: none;
+}
+
+.font-list-item {
+    display: block;
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.font-list-item:hover {
+    color: #A445ED;
+}
+
+/* search bar */
+
+.search-form {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    border: none;
+    outline: none;
+    border-radius: 1.6rem;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 1.4rem 2.4rem;
+    background: #F4F4F4;
+    transition: background-color 500ms;
+}
+
+.search-input {
+    border: none;
+    outline: none;
+    font-size: 1.6rem;
+    font-weight: 700;
+    background: none;
+}
+
+.search.dark {
+    background: #1f1f1f;
+    color: #ffffff;
+}
+
+.search-form.dark {
+    background-color: #1f1f1f;
+    color: #ffffff;
+}
+
+.search-form.dark .search-input {
+    color: #ffffff;
+}
+
+.search-button {
+    border: none;
+    outline: none;
+    background: none;
+    height: fit-content;
+    display: flex;
+}
+
+.search-button img {
+    margin-top: auto;
+}
+
+
+.error-message {
+    color: #ff5252;
+    font-size: 1.6rem;
+    margin-top: .8rem;
+    display: none;
+}
+
+.error-message.active {
+    display: block;
+}
+
+/* play icon */
+
+.play-icon {
+    width: 4.8rem;
+}
+
+/* ----------- */
+/* main header */
+
+h1 {
+    font-size: 3.2rem;
+}
+
+h2 {
+    font-size: 1.8rem;
+    color: #A445ED;
+    font-weight: 400;
+    margin-top: .8rem;
+}
+
+h5 {
+    font-size: 1.6rem;
+    color: #757575;
+    font-weight: 400;
+}
+
+h6 {
+    font-size: 1.4rem;
+    text-decoration: underline;
+    font-weight: 400;
+}
+
+
+/* definition area */
+
+.definition {
+    gap: 2.4rem;
+    /* display: none; */
+}
+
+.definition-link {
+    font-size: 1.4rem;
+    text-decoration: none;
+    font-weight: 400;
+    color: #2d2d2d;
+    display: flex;
+    align-items: center;
+    transition: color 500ms;
+}
+
+.definition-link.dark {
+    color: #ffffff;
+}
+
+.definition-link span {
+    /* border-bottom: .5px solid #2d2d2d; */
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    text-decoration-color: var(--light-gray);
+    
+}
+
+.definition-link img {
+    margin-left: .9rem;
+}
+
+
+hr {
+    width: 100%;
+    margin: auto;
+    margin-left: 2rem;
+    border: none;
+    border-bottom: 1px solid #e9e9e9;
+}
+
+.info {
+    gap: 3.2rem;
+}
+
+.definition-list {
+    list-style: disc inside;
+    margin-top: 1.7rem;
+    color: #A445ED;
+}
+
+.bullet-point {
+    color: #2d2d2d;
+    display: inline-block;
+    transition: color 500ms;
+}
+
+.bullet-point.dark {
+    color: #ffffff;
+}
+
+.definition-list li span.no-dot-list-item {
+    font-size: 1.5rem;
+    color: #757575;
+}
+
+
+
+.definition-list li {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 1.3rem;
+}
+
+/* ------------------ */
+
+.invisible {
+    visibility: hidden;
+}
+
+.synonym {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #A445ED;
+    margin-left: 2.2rem;
+}
+
+.no-left-margin {
+    margin-left: 0;
+}
+
+.italic {
+    font-style: italic;
+}
+
+.source-section {
+    display: flex;
+    flex-direction: column;
+    gap: .8rem;
+}
+
+/* no word found overlay */
+
+
+.overlay {
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 13.2rem;
+    display: none;
+}
+
+.overlay h2 {
+    font-size: 2.0rem;
+    font-weight: 700;
+    margin-top: 4.4rem;
+    margin-bottom: 2.4rem;
+    color: #2d2d2d;
+}
+
+.overlay p {
+    font-size: 1.8rem;
+    line-height: 2.4rem;
+}
+
+p.sad-face {
+    font-size: 6.4rem;
+}

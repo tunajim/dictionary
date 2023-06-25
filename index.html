@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
+    <link rel="stylesheet" href="styles.css" />
+
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&family=Inter:wght@400;700&family=Lora:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <!------------------>
+
+    <title>Frontend Mentor | Dictionary web app</title>
+  </head>
+  <body>
+    <header>
+      <img
+        class="logo"
+        src="/assets/images/logo.svg"
+        alt="Dictionary app logo"
+      />
+      <div class="options">
+        <!-- <select class="font-select">
+        <option value="sans-serif" class="sans">Sans Serif</option>
+        <option value="serif" class="serif">Serif</option>
+        <option value="none">None</option>
+      </select> -->
+        <div id="font-select" class="font-select">
+          <h4 class="no-click dropdown-label sans flex">
+            Sans Serif
+            <img src="/assets/images/icon-arrow-down.svg" alt="select button" />
+          </h4>
+          <div class="dropdown">
+            <ul class="flex fl-column space-between">
+              <li class="font-list-item sans">Sans Serif</li>
+              <li class="font-list-item serif">Serif</li>
+              <li class="font-list-item mono">Mono</li>
+            </ul>
+          </div>
+        </div>
+        <div class="border"></div>
+        <div class="flex fl-gap">
+          <div class="dark-mode-toggle-bg">
+            <div class="dark-mode-toggle-button"></div>
+          </div>
+
+          <img
+            class="moon"
+            src="/assets/images/icon-moon.svg"
+            alt="dark mode icon"
+          />
+        </div>
+      </div>
+    </header>
+    <main class="flex fl-column">
+      <div>
+        <form id="word-search" name="search" class="search-form" action="#">
+          <input
+            class="search-input"
+            type="text"
+            value="keyboard"
+            placeholder="Search for any word..."
+          />
+          <button class="search-button" type="submit">
+            <img src="/assets/images/icon-search.svg" alt="search">
+          </button>
+        </form>
+        <div class="error-message">Whoops, can't be empty...</div>
+      </div>
+      <div class="overlay flex fl-column">
+        <p class="sad-face">😕</p>
+        <h2>No Definition Found</h2>
+        <p>Sorry pal, we couldn't find definitions for the word you were looking for. You can try the search again at a later time or head to the web instead</p>
+      </div>
+      <div class="definition flex fl-column">
+
+        <section class="info flex fl-column">
+          <section class="flex space-between center align-center">
+            <div>
+              <h1 id="word-name">keyboard</h1>
+              <h2 id="pronunciation">/ˈkiːbɔːd/</h2>
+            </div>
+            <img
+              class="play-icon"
+              src="assets/images/icon-play.svg"
+              alt="play word audio"
+            />
+          </section>
+          <div class="flex">
+            <h3 class="italic">noun</h3>
+            <hr />
+          </div>
+          <section>
+            <h5>Meaning</h5>
+            <ul id="meaning-list" class="definition-list">
+              <li>
+                <div class="dot">&#x2022</div>
+                <p class="bullet-point">
+                  (etc.) A set of keys used to operate a typewriter, computer etc.
+                </p>
+              </li>
+              <li>
+                <div class="dot">&#x2022</div>
+                <p class="bullet-point">
+                  A component of many instruments including the piano, organ, and
+                  harpsichord consisting of usually black and white keys that cause
+                  different tones to be produced when struck.
+                </p>
+              </li>
+            </ul>
+            <section class="flex" style="align-items: center;">
+          
+              <h5>Synonyms</h5>
+              <p class="synonym">electronic keyboard</p>
+            </section>
+          </section>
+          <div class="flex">
+            <h3 class="italic">verb</h3>
+            <hr />
+          </div>
+          <section>
+            <h5>Meaning</h5>
+            <ul id="meaning-list" class="definition-list">
+              <li>
+                <div class="dot">&#x2022</div>
+                <p class="bullet-point">
+                  To type on a keyboard
+                </p>
+              </li>
+              <li>
+                <div class="dot invisible">&#x2022</div>
+                <span class="no-dot-list-item">
+                  “Keyboarding is the part of this job I hate the most.”
+                </span>
+              </li>
+            </ul>
+          </section>
+          <hr class="no-left-margin">
+          <section class="source-section">
+            <h6 class="light-gray-text">Source</h6>
+            <a class="definition-link" href="https://en.widtionary.org/wiki/keyboard">
+              <span>https://en.wiktionary.org/wiki/keyboard</span>
+              <img src="/assets/images/icon-new-window.svg" alt="open new window">
+            </a>
+          </section>
+        </section>
+      </div>
+      <section></section>
+    </main>
+    <script src="/scripts/font-selection.js"></script>
+    <script src="/scripts/dark-mode.js"></script>
+    <script src="/scripts/validate.js"></script>
+  </body>
+</html>
