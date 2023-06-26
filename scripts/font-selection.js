@@ -11,7 +11,6 @@ for(let i = 0; i < fonts.length; i++){
 }
 
 function changeFont(e) {
-    console.log(e.target);
     if(e.target.classList.contains("sans")) {
         label.innerHTML = 'Sans Serif <img src="./assets/images/icon-arrow-down.svg" alt="select button"></img>';
         label.style.fontFamily = "'Inter', sans-serif";

@@ -4,7 +4,8 @@ const input = form.querySelector(".search-input");
 const errorMessage = document.querySelector(".error-message");
 let headerCount = 0;
 const darkModeSelector = document.querySelector(".dark-mode-toggle-bg");
-
+let hr = makeElement("hr", [], "");
+const overlay = document.querySelector(".overlay");
 
 form.addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -16,7 +17,10 @@ form.addEventListener("submit", async (e) => {
             .then(response => response.json())
             .then(data => {
                 clearInfo();
-                populateDefinition(data[0]);
+                deactivateOverlay();
+                (data[0] === undefined) ?
+                    displayErrorMessage():
+                    populateDefinition(data[0]);
                 headerCount = 0;
             })
             .catch(error => {
@@ -30,9 +34,18 @@ input.addEventListener("input", (e) => {
     errorMessage.classList.remove("active");
 })
 
+function deactivateOverlay() {
+    overlay.classList.remove("active");
+}
+
+function displayErrorMessage() {
+    overlay.classList.add("active");
+}
+
+
 function clearInfo() {
     console.log(info.firstElementChild);
-    while(!info.firstElementChild.classList.contains("source-section")) {
+    while(info.firstChild) {
         info.removeChild(info.firstChild);
     }
 }
@@ -44,19 +57,40 @@ const info = document.querySelector(".info");
 function populateDefinition(data) {
     wordName.textContent = data.word;
     for(let i = 0; i < data.meanings.length; i++) {
-        const definition = createDefinitionComponent(data.word, data.meanings[i], data.phonetic);
+        const definition = createDefinitionComponent(data.word, data.meanings[i], data.phonetic, data.sourceUrls[0]);
     }
+
+    const sourceSection = addSource(data.sourceUrls[0]);
+    info.append(hr.cloneNode(true));
+    info.append(sourceSection); 
 }
 
-function createDefinitionComponent(word, meaning, pronunciation) {
+function addSource(source) {
+    const sourceContainer = makeElement("section", ["source-section"], "");
+    const sourceLabel = makeElement("h6", ["light-gray-text"], "Source");
+    const definitionLink = makeElement("a", ["definition-link"], "");
+    definitionLink.setAttribute("href", source)
+    const sourceSpan = makeElement("span", [], source);
+    const newWindowIcon = makeElement("img", [], "");
+    newWindowIcon.setAttribute("src", "assets/images/icon-new-window.svg");
+    newWindowIcon.setAttribute("alt", "open new window");
 
+    if(darkModeSelector.classList.contains("dark")) {
+        definitionLink.classList.add("dark");
+    }
+
+    sourceContainer.append(sourceLabel);
+    definitionLink.append(sourceSpan);
+    definitionLink.append(newWindowIcon);
+    sourceContainer.append(definitionLink);
+
+    return sourceContainer;
+}
+
+function createDefinitionComponent(word, meaning, pronunciation, source) {
     const mainHeader = buildHeader(word, meaning, pronunciation);
-
-
-
     const meaningType = makeElement("h3", ["italic"], meaning.partOfSpeech);
     const meaningContainer = makeElement("div", ["flex"], "");
-
     const definitionSection = makeElement("section", [], "");
     const header = makeElement("h5", [], "Meaning");
     const list = makeElement("ul", ["definition-list"], "");
@@ -75,21 +109,32 @@ function createDefinitionComponent(word, meaning, pronunciation) {
     });
 
 
+
+
+
+
     definitionSection.append(header);
     definitionSection.append(list);
 
-    const hr = makeElement("hr", [], "");
+    const hrClone = makeElement("hr", [], "");
 
 
 
     meaningContainer.append(meaningType);
-    meaningContainer.append(hr);
+    meaningContainer.append(hr.cloneNode(true));
+
+
     if(headerCount < 1){
-        info.insertBefore(mainHeader, sourceSection);
+        info.append(mainHeader);
         headerCount++;
     }
-    info.insertBefore(meaningContainer, sourceSection);
-    info.insertBefore(definitionSection, sourceSection);
+    info.append(meaningContainer);
+    info.append(definitionSection);
+
+    if(meaning.synonyms.length > 0) {
+        const synonymContainer = createSynonymSection(meaning);
+        info.append(synonymContainer);
+    }
 }
 
 function buildHeader(word, meaning, pronunciation) {
@@ -109,6 +154,16 @@ function buildHeader(word, meaning, pronunciation) {
     mainHeaderSection.append(playIcon);
 
     return mainHeaderSection;
+}
+
+function createSynonymSection(meaning) {
+    const synonymContainer = makeElement("section", ["flex"], "");
+    synonymContainer.style.alignItems = "center";
+    const synonymLabel = makeElement("h5", [], 'Synonyms');
+    const synonym = makeElement("p", ["synonym"], meaning.synonyms[0]);
+    synonymContainer.append(synonymLabel);
+    synonymContainer.append(synonym);
+    return synonymContainer;
 }
 
 
@@ -138,7 +193,6 @@ function createDefinition(type, el) {
     }
 
     if(darkModeSelector.classList.contains("dark")) {
-        console.log("worked");
         p.classList.add("dark");
     }
 

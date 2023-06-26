@@ -1,7 +1,7 @@
 const buttonContainer = document.querySelector(".dark-mode-toggle-bg");
 const button = buttonContainer.querySelector(".dark-mode-toggle-button");
 const bullets = document.getElementsByClassName("bullet-point");
-const source = document.getElementsByClassName("definition-link")[0];
+// const source = document.getElementsByClassName("definition-link")[0];
 const moon = document.querySelector(".moon");
 const search = document.querySelector(".search-form");
 
@@ -31,7 +31,10 @@ function toggleBackground() {
 }
 
 function toggleSourceColor() {
-    source.classList.toggle("dark");
+    const source = document.getElementsByClassName("definition-link")[0];
+    if(source) {
+        source.classList.toggle("dark");
+    }
 }
 
 function toggleMoonColor() {
@@ -46,6 +49,7 @@ function toggleMoonColor() {
 }
 
 function toggleSearchBarColor () {
+    console.log("toggle search");
     search.classList.toggle("dark");
 }
 
