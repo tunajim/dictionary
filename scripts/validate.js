@@ -120,7 +120,7 @@ function createDefinitionComponent(word, meaning, pronunciation, source) {
     const definitionSection = makeElement("section", [], "");
     const header = makeElement("h5", [], "Meaning");
     const list = makeElement("ul", ["definition-list"], "");
-    list.setAttribute.id = "meaning-list";
+    // list.setAttribute.id = "meaning-list";
 
     meaning.definitions.forEach(element => {
         const definition = createDefinition(meaning.type, element); 
