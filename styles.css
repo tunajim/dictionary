@@ -236,6 +236,10 @@ option {
     color: #ffffff;
 }
 
+.failed-search.dark {
+    color: #ffffff;
+}
+
 .search-form.dark {
     background-color: #1f1f1f;
     color: #ffffff;
@@ -479,6 +483,7 @@ p.sad-face {
         font-size: 2rem;
         
     }
+
 
     .info {
         gap: 4rem;

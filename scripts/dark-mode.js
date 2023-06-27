@@ -4,6 +4,7 @@ const bullets = document.getElementsByClassName("bullet-point");
 // const source = document.getElementsByClassName("definition-link")[0];
 const moon = document.querySelector(".moon");
 const search = document.querySelector(".search-form");
+const failedSearch = document.querySelector(".failed-search");
 
 console.log(button);
 
@@ -16,6 +17,7 @@ function toggleDarkMode(e) {
     toggleMoonColor();
     toggleSearchBarColor();
     toggleDropdown();
+    toggleFailedSearch();
 }
 
 function toggleButton() {
@@ -55,4 +57,8 @@ function toggleSearchBarColor () {
 
 function toggleDropdown() {
     dropdown.classList.toggle("dark");
+}
+
+function toggleFailedSearch() {
+    failedSearch.classList.toggle("dark");
 }
