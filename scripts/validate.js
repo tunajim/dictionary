@@ -7,6 +7,11 @@ const darkModeSelector = document.querySelector(".dark-mode-toggle-bg");
 let hr = makeElement("hr", [], "");
 const overlay = document.querySelector(".overlay");
 
+const playButton = document.querySelector(".play-icon");
+playButton.addEventListener("click", playPhonetic);
+
+// 
+
 form.addEventListener("submit", async (e) => {
     e.preventDefault();
     if(input.value === "") {
@@ -21,6 +26,7 @@ form.addEventListener("submit", async (e) => {
                 (data[0] === undefined) ?
                     displayErrorMessage():
                     populateDefinition(data[0]);
+                updateSound(data[0].phonetics);
                 headerCount = 0;
             })
             .catch(error => {
@@ -34,6 +40,27 @@ input.addEventListener("input", (e) => {
     errorMessage.classList.remove("active");
 })
 
+
+function updateSound(arr) {
+    const playBtn = document.querySelector(".play-icon");
+
+    for(let i = 0; i < arr.length ; i++) {
+        if(arr[i].audio != "") {
+            playBtn.dataset.audio = arr[i].audio;
+        }
+    }
+
+    playBtn.addEventListener("click", playPhonetic);
+
+}
+
+function playPhonetic(e) {
+    let audio = new Audio();
+    audio.src = e.target.dataset.audio;
+    audio.play();
+    audio = null;
+}
+
 function deactivateOverlay() {
     overlay.classList.remove("active");
 }
@@ -44,7 +71,6 @@ function displayErrorMessage() {
 
 
 function clearInfo() {
-    console.log(info.firstElementChild);
     while(info.firstChild) {
         info.removeChild(info.firstChild);
     }
@@ -107,22 +133,12 @@ function createDefinitionComponent(word, meaning, pronunciation, source) {
             list.append(example);
         }
     });
-
-
-
-
-
-
+    
     definitionSection.append(header);
     definitionSection.append(list);
 
-    const hrClone = makeElement("hr", [], "");
-
-
-
     meaningContainer.append(meaningType);
     meaningContainer.append(hr.cloneNode(true));
-
 
     if(headerCount < 1){
         info.append(mainHeader);
